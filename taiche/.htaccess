@@ -1,0 +1,13 @@
+# Enable the Rewrite Engine
+RewriteEngine On
+
+# Redirect requests to loginadmin.php or login.php based on the URL
+RewriteRule ^admin/login$ controller/loginAdminController.php [L]
+RewriteRule ^user/login$ controller/userLoginController.php [L]
+
+# If a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Otherwise, redirect all other requests to index.php
+RewriteRule . index.php [L]
